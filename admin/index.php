@@ -1,34 +1,6 @@
 <?php
   session_start();
 
-  if($_SESSION['id'] != '1')
-  {
-  	session_destroy();
-    header("Location:../");
-  }
-
-?>  
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
-    <title>Admin</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../css/style.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -90,7 +62,7 @@
 
         <!-- Table -->
       <table class="table" weidth="100">
-       <tr><td>#</td><td>Serviço 1</td><td>Valor</td></tr>
+       <tr><td>#</td><td>Empresa</td><td>Produto</td></tr>
        <tr><td>#</td><td>Serviço 1</td><td>Valor</td></tr>
        <tr><td>#</td><td>Serviço 1</td><td>Valor</td></tr>
       </table>
