@@ -1,58 +1,34 @@
 <?php
   session_start();
- if($_SESSION['id'] != '1')
 
+  if($_SESSION['id'] != '1')
   {
-
-    session_destroy();
-
+  	session_destroy();
     header("Location:../");
-
   }
 
-
-
 ?>  
-
 <!DOCTYPE html>
-
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="">
-
     <meta name="author" content="">
-
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
+    <title>Admin</title>
 
-
-   <title>Admin</title>
-
-
-
-<!-- Bootstrap core CSS -->
-
+    <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 
-
-
     <!-- Custom styles for this template -->
-
     <link href="../css/style.css" rel="stylesheet">
 
-
-
     <!-- Just for debugging purposes. Don't actually copy this line! -->
-
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -74,7 +50,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">AVA Servisos</a>
+            <a class="navbar-brand" href="#">Produtos</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -101,22 +77,27 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>Tabela de serviços</h1>
+          <h1>Tabela de produtos</h1>
         </div>
-        <p class="lead">Crie, selecione ou delete serviços:</p>
-        <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+        <p class="lead">Adicione, altere ou delete produtos:</p>
       </div>
     </div>
 
-    <div class="panel panel-default">
+    <div align='right' class="panel panel-default">  
+      <form action='../funcoes/adicionar.php'>
+        <button class="btn btn-default btn-lg" type='submit'>
+          <span class="glyphicon glyphicon-plus"></span> Add
+        </button>
+      </form>
+
+      <a href="#"><img src='add.png'></img></a>
       <!-- Default panel contents -->
-      <div class="panel-heading">Panel heading</div>
+      <div align='left' id="texto" class="panel-heading"></div>
+
 
         <!-- Table -->
       <table class="table" weidth="100">
-       <tr><td>#</td><td>Empresa</td><td>Produto</td></tr>
-       <tr><td>#</td><td>Serviço 1</td><td>Valor</td></tr>
-       <tr><td>#</td><td>Serviço 1</td><td>Valor</td></tr>
+       <tr><td>#</td><td>Empresa</td><td>Produto</td><td>Setor</td><td>Segmento</td><td>Marca</td><td>Descrição</td><td>Data e hora</td></tr>
       </table>
     </div>
 
@@ -126,7 +107,7 @@
 
     <div id="footer">
       <div class="container">
-        <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+        
       </div>
     </div>
 
