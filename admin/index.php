@@ -51,6 +51,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Produtos</a>
+
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -98,6 +99,7 @@
         <!-- Table -->
       <table class="table" weidth="100">
        <tr><td>#</td><td>Empresa</td><td>Produto</td><td>Setor</td><td>Segmento</td><td>Marca</td><td>Descrição</td><td>Data e hora</td></tr>
+
       </table>
     </div>
 
@@ -107,7 +109,7 @@
 
     <div id="footer">
       <div class="container">
-        
+
       </div>
     </div>
 
