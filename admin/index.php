@@ -7,6 +7,20 @@
     header("Location:../");
   }
 
+  function __autoload($classe) 
+  {
+    if (file_exists("../classes/{$classe}.class.php")) 
+    {
+      include_once "../classes/{$classe}.class.php"; 
+    }
+  }             
+
+        /*
+         * CLASSE DE REGISTROS E CONEXAO
+         */
+        $conecta = new Recordset();
+        $conecta->connection();
+
 ?>  
 <!DOCTYPE html>
 <html lang="en">
