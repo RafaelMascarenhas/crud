@@ -1,3 +1,20 @@
+<?php
+  function __autoload($classe) 
+  {
+    if (file_exists("classes/{$classe}.class.php")) 
+    {
+      include_once "classes/{$classe}.class.php"; 
+    }
+  }             
+
+        /*
+         * CLASSE DE REGISTROS E CONEXAO
+         */
+
+        if(!empty($_POST)){
+          $login = new Login($_POST['pass'], $_POST['user']);
+        }
+?>
     <!DOCTYPE html>
     <html lang="en">
       <head>
@@ -27,32 +44,16 @@
       </head>
 
       <body>
-        <?php
-          if(!empty($_POST))
-          {
-            if((!empty($_POST['user'])) && (!empty($_POST['pass'])))
-            {
-              if($_POST['user'] == 'Rafael' && $_POST['pass'] == '12345')
-              {
-                 session_start();
-                 $_SESSION['id'] = '1';
-                 header("Location:admin/");
-              }
-              else
-              {
-                echo '<div class="alert alert-danger alerta">Usuário ou senha inválido.</div>';
 
-              }
-            }
-            else
-            {
-              echo '<div class="alert alert-danger alerta">Digite usuário e senha.</div>';
-            }
-         }
-
-
-        ?>
         <div class="container">
+
+          <?php
+            if(!empty($_POST)){
+              echo $login->getMsgAlert();
+            }
+
+        ?> 
+
 
           <form action="#" method="post" class="form-signin">
             <h2 class="form-signin-heading">Please sign in</h2>
