@@ -81,7 +81,7 @@
                         // GRAVA OS DADOS DO USUARIO AUTENTICADO NA SESSAO
                         $_SESSION['id'] = $row->id;
                         $_SESSION['nome'] = $row->nome;
-                        header("Location: administrador/andamentos/relacao_processos.php?processo=1&pag=1");
+                        header("Location: admin/index.php");
                     } else {
                         // TIPO DE ALERTA PARA DADOS INCORRETOS
                         $this->typeAlert (9);
@@ -102,10 +102,14 @@
                 switch ( $error ) {
                     case 8:
                         // MSG PARA USUARIO E SENHA VAZIOS
-                        $this->msgalert =  '<div id="msgerro">
+                        $this->msgalert =  '<div id="msgerro" width="23">
+                                                
                                                 <div class="englobamsgcad2">
+                                                    <div class="alert alert-warning">
                                                         <span>Nome de usu&aacute;rio e senha s&atilde;o obrigat&oacute;rios</span>
+                                                    </div>
                                                 </div> <!-- FIM DE ENGLOBAMSGCAD2 -->
+                                                
                                             </div> <!-- FIM DE MSGERRO -->';
                        // $this->setMsgType (8);                  
                         break;
@@ -114,7 +118,9 @@
                         // MSG PARA USUARIO E SENHA VAZIOS
                         $this->msgalert =  '<div id="msgerro">
                                                 <div class="englobamsgcad2">
+                                                    <div class="alert alert-danger">
                                                         <span>Dados incorretos!</span>
+                                                    </div>
                                                 </div> <!-- FIM DE ENGLOBAMSGCAD2 -->
                                             </div> <!-- FIM DE MSGERRO -->';
                        // $this->setMsgType (9);              

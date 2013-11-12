@@ -56,7 +56,7 @@
 
 
           <form action="#" method="post" class="form-signin">
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading">Faça o login aqui:</h2>
             <input name="user" type="text" class="form-control" placeholder="Email address"  autofocus>
             <input name="pass" type="password" class="form-control" placeholder="Password" >
             <label class="checkbox">

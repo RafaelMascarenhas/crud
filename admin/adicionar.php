@@ -12,7 +12,7 @@
          */
         $conecta = new Recordset();
         $conecta->connection();
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +59,7 @@
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="index.php">Home</a></li>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -87,7 +87,6 @@
 	      Adicionar produto</td>
 	      <br>
         <form action='' method='post'>
-	        <br><input name='id' type='text' class='form-control' placeholder='Empresa'  autofocus>
 	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus>
 	        <br><input name='produto' type='text' class='form-control' placeholder='Produto'  autofocus>
 	        <br><input name='setor' type='text' class='form-control' placeholder='Setor'  autofocus>
