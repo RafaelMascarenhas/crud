@@ -13,6 +13,7 @@
         $conecta = new Recordset();
         $conecta->connection();
         $paginacao = new Paginator(); 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,12 +42,9 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
   </head>
-
   <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Fixed navbar -->
       <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -67,13 +65,13 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acão <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Ação</a></li>
-                  <li><a href="#">Outra ação</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="adicionar.php">Adicionar</a></li>
+                  <li><a href="editar.php">Editar</a></li>
+                  <li><a href="#">Deletar</a></li>
                   <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li class="dropdown-header">Opções</li>
+                  <li><a href="#">Outro link</a></li>
+                  <li><a href="#">Outro link 2</a></li>
                 </ul>
               </li>
             </ul>
@@ -82,13 +80,10 @@
       </div>
 
       <!-- Begin page content -->
-      <div class="container">
         <div class="page-header">
-          <h1>Tabela de produtos</h1>
+          <h1 align="center" >Tabela de produtos</h1>
         </div>
-        <p class="lead">Adicione, altere ou delete produtos:</p>
-      </div>
-    </div>
+        <p align='center' class="lead">Adicione, altere ou delete produtos:</p>
     </div>
 
     <div id="footer">
@@ -96,16 +91,12 @@
           <div class="container">
       <div class="row-fluid">
         <div class="span12">
-          <div class="page-header-top">
-          </div>
-          <div class="page-header subnav">
             <div class="pull-right">
               <div class="btn-group">
                 <a href="adicionar.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Novo <span class="glyphicon glyphicon-plus"></span></a>
               </div>
             </div>
             <h3>Lista de produtos</h3>
-          </div>
           <div class="row-fluid">
             <div class="span9">
               <form>  
@@ -127,14 +118,13 @@
                 </thead>
                 <tbody>
 <?php
-    $paginacao->sql = "SELECT * from produto";
-      $paginacao->limite = 10;                                                                                
+      $paginacao->sql = "SELECT * from produto";
+      $paginacao->limite = 3;                                                                                
       $resultado = $conecta->connection()->query($paginacao->sql());
-      $paginacao->imprimeBarraResultados();
       while($linha = $resultado->fetch(PDO::FETCH_ASSOC)) {
 ?>
                   <tr>
-                    <td>1</td>
+                    <td><?php echo $linha['id'];?></td>
                     <td width="15%"><a data-original-title="Put Some Information Here" href="#" class="tooltip-right"><?php echo $linha['empresa'];?></a></td>
                     <td><i class="icon-file"></i><?php echo $linha['produto'];?></td>
                     <td><?php echo $linha['setor'];?></td>
@@ -143,48 +133,25 @@
                     <td><?php echo $linha['descricao'];?></td>
                     <td width="15%">
                     <div class="btn-group">
-                      <a data-original-title="Detail" href="#" class="tooltip-top btn"><i class="icon-info-sign"></i></a>
-                      <a data-original-title="Edit" href="#" class="tooltip-top btn"><i class="icon-list-alt"></i></a>
+                      <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
                     </div></td>
                     <td width="1%">
                     <input type="checkbox">
                     </td>
                   </tr>
-
 <?php
       }
-?>
-<?php
-     $paginacao->imprimeBarraNavegacao();
+                  $paginacao->imprimeBarraResultados();
 ?>
                 </tbody>
               </table>
+<?php
+              $paginacao->imprimeBarraNavegacao();
+?>
               <div class="pull-right">
                 <button type="button" class="delete btn btn-warning">
                   <i class="icon-white icon-trash"></i> Delete Checked Box
                 </button>
-              </div>
-              <div class="pagination">
-                <ul>
-                  <li>
-                    <a href="#">«</a>
-                  </li>
-                  <li class="active">
-                    <a href="#">1</a>
-                  </li>
-                  <li>
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#">4</a>
-                  </li>
-                  <li>
-                    <a href="#">»</a>
-                  </li>
-                </ul>
               </div>
               </form>
             </div>
@@ -193,7 +160,7 @@
       </div>
       <hr>
       <footer>
-
+        <br><br><br><br><br><br><br>
       </footer>
     </div>
       </div>
@@ -203,8 +170,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../bootstrap-tooltip.js"></script>
-    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/bootstrap-tooltip.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/custom.js"></script>
+
   </body>
 </html>

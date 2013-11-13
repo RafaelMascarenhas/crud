@@ -66,6 +66,7 @@
 
     <div class="container" >
       <div class="tabela">
+        <h2>Adicionar produto</h2>
 	      <br><br><br>
 <?php
  if(!empty($_POST))
@@ -84,7 +85,7 @@
     $conecta->insertValuesBindParam("produto", $dados);
   }
 ?>        
-	      Adicionar produto</td>
+	      
 	      <br>
         <form action='' method='post'>
 	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus>
@@ -93,7 +94,11 @@
 	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento'  autofocus>
 	        <br><input name='marca' type='text' class='form-control' placeholder='Marca'  autofocus>
 	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição'  autofocus>
-          <br><input type='submit' value='Continuar'>
+          <br>  
+          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Gravar </button>
+          <div class="btn-group">
+            <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
+          </div>
         </form>
     </div>
   </body>

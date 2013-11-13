@@ -24,7 +24,7 @@
              * CONSTRUTOR CARREGA A STRING USADA PARA COMO PAGINADOR
              */
             public function __construct() {
-                $this->solicitador = $_REQUEST["{$this->paginador}"];                
+                $this->solicitador = @$_REQUEST["{$this->paginador}"];                
             }
             
             /*
@@ -111,7 +111,7 @@
                         if ($this->paginaAtual() > 1) {
                                 echo " <li><a href='?" . $this->paginador . "=1"  . $this->reconstruiQueryString($this->paginador) . "'>Primeiro</a></li> ";
                                 $anterior = $this->paginaAtual() - 1;
-                                echo " <li><a href='?" . $this->paginador . "=" . $anterior . $this->reconstruiQueryString($this->paginador) . "'>&laquo; Anterior</a></li> ";
+                                echo " <li><a href='?" . $this->paginador . "=" . $anterior . $this->reconstruiQueryString($this->paginador) . "'>&laquo;</a></li> ";
                         }
 
                         for ($x = ($this->paginaAtual() - $this->quantidade); $x < (($this->paginaAtual() + $this->quantidade) + 1); $x++) {
@@ -126,7 +126,7 @@
                         
                         if ($this->paginaAtual() != $this->paginasTotais()) {
                                 $paginaProxima = $this->paginaAtual() + 1;
-                                echo " <li><a href='?" . $this->paginador . "=" . $paginaProxima . $this->reconstruiQueryString($this->paginador) . "'>Pr&oacute;ximo &raquo;</a></li> ";
+                                echo " <li><a href='?" . $this->paginador . "=" . $paginaProxima . $this->reconstruiQueryString($this->paginador) . "'>&raquo;</a></li> ";
                                 echo " <li><a href='?" . $this->paginador . "=" . $this->paginasTotais() . $this->reconstruiQueryString($this->paginador) . "'>&Uacute;ltimo</a></li> ";
                         }
                             echo '</ul>';

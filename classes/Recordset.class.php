@@ -87,6 +87,8 @@ class recordset{
                                 $stmt = $this->connection()->prepare($sql);                                
                                 $stmt->execute($arrValores);
 
+                                echo "Produto cadastrado com sucesso.";
+
                         } else {
                                 echo "Erro ao checar os valores!";
                         }
