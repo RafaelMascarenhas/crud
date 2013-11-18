@@ -119,7 +119,7 @@
                 <tbody>
 <?php
       $paginacao->sql = "SELECT * from produto";
-      $paginacao->limite = 3;                                                                                
+      $paginacao->limite = 10;                                                                                
       $resultado = $conecta->connection()->query($paginacao->sql());
       while($linha = $resultado->fetch(PDO::FETCH_ASSOC)) {
 ?>
@@ -133,7 +133,9 @@
                     <td><?php echo $linha['descricao'];?></td>
                     <td width="15%">
                     <div class="btn-group">
+                      <a data-original-title="Adicionar" href="adicionar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-plus"></span></i></a>
                       <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
+                      <a data-original-title="Deletar" href="deletar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>
                     </div></td>
                     <td width="1%">
                     <input type="checkbox">
@@ -149,11 +151,10 @@
               $paginacao->imprimeBarraNavegacao();
 ?>
               <div class="pull-right">
-                <button type="button" class="delete btn btn-warning">
-                  <i class="icon-white icon-trash"></i> Delete Checked Box
+                <button type='button' class="delete btn btn-warning">
+                  <i class="icon-white icon-trash"></i> Deletar selecionado(s)
                 </button>
               </div>
-              </form>
             </div>
           </div>
         </div>

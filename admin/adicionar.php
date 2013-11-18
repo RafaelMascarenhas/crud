@@ -1,4 +1,8 @@
 <?php
+  if($_POST)
+  {
+    $msg = '<div class="alert alert-success"><span>Produto adicionado com sucesso!</span></div>';
+  }
   function __autoload($classe) 
   {
     if (file_exists("../classes/{$classe}.class.php")) 
@@ -85,7 +89,7 @@
     $conecta->insertValuesBindParam("produto", $dados);
   }
 ?>        
-	      
+	      <?php echo @$msg;?>
 	      <br>
         <form action='' method='post'>
 	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus>

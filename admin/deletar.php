@@ -3,7 +3,7 @@
   $string = "id = ".$id;
   if($_POST)
   {
-    $msg = '<div class="alert alert-success"><span>Produto alterado com sucesso!</span></div>';
+    $msg = '<div class="alert alert-success"><span>Produto deletado com sucesso!</span></div>';
   }
   function __autoload($classe) 
   {
@@ -73,45 +73,32 @@
 
     <div class="container" >
       <div class="tabela">
-        <h2>Editar produto</h2>
-	      <br><br><br>
+        <h2>Deletar produto</h2>
+        <br><br><br>
 <?php
  if(!empty($_POST))
- {
- // MONTANDO UM ARRAY PARA O INSERT
-    $dados = array(     // gmdate()  RETORNA A HORA DO MERIDIANO GREENWICH
-                        'empresa'=>$_POST['empresa'],
-                        'produto'=>$_POST['produto'],
-                        'setor'=>$_POST['setor'],
-                        'segmento'=>$_POST['segmento'],
-                        'marca'=>$_POST['marca'],
-                        'descricao'=>$_POST['descricao']
-    );
-                                                                                                                                                                                                                                                                                                
+ {                                                                                                                                                                                                                                                                                              
     // CHAMAMOS A CLASE DE INSERCAO
-    $conecta->alterar("produto", $dados, $string);
+    $conecta->delete("produto", $string);
   }
     $paginacao->sql = "SELECT * from produto WhERE id = '".$id."'";
     $resultado = $conecta->connection()->query($paginacao->sql());
     $linha = $resultado->fetch(PDO::FETCH_ASSOC);
 ?>
-	      <?php echo @$msg;?>
-	      <br>
-        <form action='' method='post'>
-          Empresa:
-	        <br><input name='empresa' value="<?php echo $linha['empresa'];?>" type='text' class='form-control' placeholder='Empresa'  autofocus>
-	        Produto:
-          <br><input name='produto' value="<?php echo $linha['produto'];?>" type='text' class='form-control' placeholder='Produto'  autofocus>
-	        Setor:
-          <br><input name='setor' value="<?php echo $linha['setor'];?>" type='text' class='form-control' placeholder='Setor'  autofocus>
-	        Segmento:
-          <br><input name='segmento' value="<?php echo $linha['segmento'];?>" type='text' class='form-control' placeholder='Segmento'  autofocus>
-	        Marca:
-          <br><input name='marca' value="<?php echo $linha['marca'];?>" type='text' class='form-control' placeholder='Marca'  autofocus>
-	        Descrição:
-          <br><input name='descricao' value="<?php echo $linha['descricao'];?>" type='text' class='form-control' placeholder='Descrição'  autofocus>
-          <br>  
-          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
+        <?php echo @$msg;
+
+              echo 'Empresa: '.$linha['empresa'];
+              echo '<br>Produto: '.$linha['produto'];
+              echo '<br>Setor: '.$linha['setor'];
+              echo '<br>Segmento: '.$linha['segmento'];
+              echo '<br>Marca: '.$linha['marca'];
+              echo '<br>Descrição:'.$linha['descricao'];
+              echo '<br><br>';
+        ?>
+          <br>
+        <form action='' method='post'>  
+          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Deletar </button>
+          <input type='hidden' value='deletar'>
           <div class="btn-group">
             <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
