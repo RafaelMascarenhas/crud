@@ -91,19 +91,30 @@
 ?>        
 	      <?php echo @$msg;?>
 	      <br>
+        <div class="input-group ">
+        Insira as informações necessárias:<br>
         <form action='' method='post'>
-	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus>
-	        <br><input name='produto' type='text' class='form-control' placeholder='Produto'  autofocus>
-	        <br><input name='setor' type='text' class='form-control' placeholder='Setor'  autofocus>
-	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento'  autofocus>
-	        <br><input name='marca' type='text' class='form-control' placeholder='Marca'  autofocus>
-	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição'  autofocus>
+	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus><br>
+	        <br><input name='produto' type='text' class='form-control' placeholder='Produto'  autofocus><br>
+	        <br><input name='setor' type='text' class='form-control' placeholder='Setor'  autofocus><br>
+	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento'  autofocus><br>
+	        <br><input name='marca' type='text' class='form-control' placeholder='Marca'  autofocus><br>
+	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição'  autofocus><br>
           <br>  
           <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Gravar </button>
           <div class="btn-group">
             <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
+      </div>
     </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/custom.js"></script>    
   </body>
 </html>

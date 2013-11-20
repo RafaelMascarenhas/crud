@@ -67,6 +67,17 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.php">Home</a></li>
+            </ul>
+            <ul class='nav navbar-nav navbar-right'> 
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i> Usuário <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="adicionar.php">Editar perfil</a></li>
+                <li class="divider"></li>
+                <li><a href="logout.php">Sair</a></li>
+                </ul>
+              </li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -97,6 +108,8 @@
 ?>
 	      <?php echo @$msg;?>
 	      <br>
+        <div class="input-group ">
+        Modifique os campos necessários:<br><br>
         <form action='' method='post'>
           Empresa:
 	        <br><input name='empresa' value="<?php echo $linha['empresa'];?>" type='text' class='form-control' placeholder='Empresa'  autofocus>
@@ -109,13 +122,23 @@
 	        Marca:
           <br><input name='marca' value="<?php echo $linha['marca'];?>" type='text' class='form-control' placeholder='Marca'  autofocus>
 	        Descrição:
-          <br><input name='descricao' value="<?php echo $linha['descricao'];?>" type='text' class='form-control' placeholder='Descrição'  autofocus>
+          <br><input name='descricao' value="<?php echo $linha['descricao'];?>" type='text' class='form-control' placeholder='Descrição'  autofocus><br>
           <br>  
           <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
           <div class="btn-group">
             <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
+      </div>
     </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/bootstrap-tooltip.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/custom.js"></script>
   </body>
 </html>

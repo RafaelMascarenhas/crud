@@ -81,9 +81,7 @@ class recordset{
                                 }
 
                                 // RETIRANDO A ULTIMA VIRGULA E INSERINDO UM PARENTESE PARA SER FORMADO A QUERY CORRETAMENTE
-                                $sql = substr_replace($sql, ")", -2, 1);
-                                echo $sql;
-                               
+                                $sql = substr_replace($sql, ")", -2, 1);                               
                                 $stmt = $this->connection()->prepare($sql);                                
                                 $stmt->execute($arrValores);
 

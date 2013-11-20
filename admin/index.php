@@ -27,6 +27,9 @@
 
     <title>Admin</title>
 
+    <!--Carregando o fonte awesome-->
+    <link href="../bootstrap/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -60,21 +63,25 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">Sobre</a></li>
-              <li><a href="#contact">Contato</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acão <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Acão <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="adicionar.php">Adicionar</a></li>
                   <li><a href="editar.php">Editar</a></li>
                   <li><a href="#">Deletar</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Opções</li>
-                  <li><a href="#">Outro link</a></li>
-                  <li><a href="#">Outro link 2</a></li>
+                </ul>
+            </ul>
+            <ul class='nav navbar-nav navbar-right'> 
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i> Usuário <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="adicionar.php">Editar perfil</a></li>
+                <li class="divider"></li>
+                <li><a href="logout.php">Sair</a></li>
                 </ul>
               </li>
             </ul>
+           </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -85,12 +92,8 @@
         </div>
         <p align='center' class="lead">Adicione, altere ou delete produtos:</p>
     </div>
-
-    <div id="footer">
-      <div class="container">
           <div class="container">
-      <div class="row-fluid">
-        <div class="span12">
+
             <div class="pull-right">
               <div class="btn-group">
                 <a href="adicionar.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Novo <span class="glyphicon glyphicon-plus"></span></a>
@@ -99,7 +102,6 @@
             <h3>Lista de produtos</h3>
           <div class="row-fluid">
             <div class="span9">
-              <form>  
               <table class="table table-striped table-bordered ">
                 <thead>
                   <tr>
@@ -111,9 +113,6 @@
                     <th>Marca</th>
                     <th>Descrição</th>
                     <th>Ação</th>
-                    <th>
-                    <input class="check_all" type="checkbox">
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,11 +120,12 @@
       $paginacao->sql = "SELECT * from produto";
       $paginacao->limite = 10;                                                                                
       $resultado = $conecta->connection()->query($paginacao->sql());
-      while($linha = $resultado->fetch(PDO::FETCH_ASSOC)) {
+      while($linha = $resultado->fetch(PDO::FETCH_ASSOC)) 
+      {
 ?>
                   <tr>
                     <td><?php echo $linha['id'];?></td>
-                    <td width="15%"><a data-original-title="Put Some Information Here" href="#" class="tooltip-right"><?php echo $linha['empresa'];?></a></td>
+                    <td width="15%"><?php echo $linha['empresa'];?></td>
                     <td><i class="icon-file"></i><?php echo $linha['produto'];?></td>
                     <td><?php echo $linha['setor'];?></td>
                     <td><?php echo $linha['segmento'];?></td>
@@ -133,13 +133,31 @@
                     <td><?php echo $linha['descricao'];?></td>
                     <td width="15%">
                     <div class="btn-group">
-                      <a data-original-title="Adicionar" href="adicionar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-plus"></span></i></a>
+                      <a data-original-title="Detalhes" data-toggle="modal" data-target="#myModal<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-zoom-in"></span></i></a>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="myModal<?php echo $linha['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <h4 class="modal-title" id="myModalLabel">Detalhes do produto</h4>
+                            </div>
+                            <div class="modal-body">
+                              <?php echo $linha['id'];?>
+                             
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
+
                       <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
                       <a data-original-title="Deletar" href="deletar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>
+                      
                     </div></td>
-                    <td width="1%">
-                    <input type="checkbox">
-                    </td>
                   </tr>
 <?php
       }
@@ -150,22 +168,14 @@
 <?php
               $paginacao->imprimeBarraNavegacao();
 ?>
-              <div class="pull-right">
-                <button type='button' class="delete btn btn-warning">
-                  <i class="icon-white icon-trash"></i> Deletar selecionado(s)
-                </button>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <hr>
       <footer>
         <br><br><br><br><br><br><br>
       </footer>
     </div>
-      </div>
-    </div>
+
+
 
 
     <!-- Bootstrap core JavaScript
