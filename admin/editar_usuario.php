@@ -8,11 +8,13 @@
       include_once "../classes/{$classe}.class.php"; 
     }
   }             
+
         /*
          * CLASSE DE REGISTROS E CONEXAO
          */
         $conecta = new Recordset();
         $conecta->connection();
+        $paginacao = new Paginator();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,16 +63,15 @@
             </button>
             <a class="navbar-brand" href="#">Produtos</a>
           </div>
-
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="index.php">Home</a></li>
             </ul>
             <ul class='nav navbar-nav navbar-right'> 
               <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                <li><a href="editar_usuario.php">Editar perfil</a></li>
+                <li><a href="index.php">Produtos</a></li>
                 <li class="divider"></li>
                 <li><a href="logout.php">Sair</a></li>
                 </ul>
@@ -82,44 +83,48 @@
 
     <div class="container" >
       <div class="tabela col-md-3">
-        <h2>Adicionar produto</h2>
-	      <br>
+        <h2>Editar usuário</h2>
+	      <br><br><br>
 <?php
  if(!empty($_POST))
  {
+  echo $_POST['nome'];
  // MONTANDO UM ARRAY PARA O INSERT
     $dados = array(     // gmdate()  RETORNA A HORA DO MERIDIANO GREENWICH
-                        'empresa'=>$_POST['empresa'],
-                        'produto'=>$_POST['produto'],
-                        'setor'=>$_POST['setor'],
-                        'segmento'=>$_POST['segmento'],
-                        'marca'=>$_POST['marca'],
-                        'descricao'=>$_POST['descricao']
+                        'nome'=>$_POST['nome'],
+                        'usuario'=>md5($_POST['usuario']),
+                        'senha'=>md5($_POST['senha'])
     );
-                                                                                                                                                                                                                                                                                                
+
+    $string = "id = ".$_SESSION['id'];                                                                                                                                                                                                                                                                                           
     // CHAMAMOS A CLASE DE INSERCAO
-    $conecta->insertValuesBindParam("produto", $dados);
+    $conecta->alterar("autenticacao", $dados, $string);
+    $msg = '<div class="alert alert-success"><span>Usuário alterado com sucesso!</span></div>';
   }
-?>        
+    $paginacao->sql = "SELECT * from autenticacao WhERE id = '".$_SESSION['id']."'";
+    $resultado = $conecta->connection()->query($paginacao->sql());
+    $linha = $resultado->fetch(PDO::FETCH_ASSOC);
+?>
 	      <?php echo @$msg;?>
 	      <br>
         <div class="input-group ">
-        Insira as informações necessárias:<br>
+        Modifique os campos desejados:<br><br>
         <form action='' method='post'>
-	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus><br>
-	        <br><input name='produto' type='text' class='form-control' placeholder='Produto'  autofocus><br>
-	        <br><input name='setor' type='text' class='form-control' placeholder='Setor'  autofocus><br>
-	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento'  autofocus><br>
-	        <br><input name='marca' type='text' class='form-control' placeholder='Marca'  autofocus><br>
-	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição'  autofocus><br>
-          <br>  
-          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Gravar </button>
+          Nome:
+	        <br><input name='nome' value="<?php echo $linha['nome'];?>" type='text' class='form-control' placeholder='Empresa' required autofocus>
+          Usuário:
+          <br><input name='usuario' type='text' class='form-control' required autofocus>
+	        Senha:
+          <br><input name='senha' type='password' class='form-control' required autofocus>
+          <br><br>  
+          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
           <div class="btn-group">
             <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
       </div>
     </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -127,6 +132,6 @@
 
     <script src="../js/bootstrap-tooltip.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/custom.js"></script>    
+    <script src="../js/custom.js"></script>
   </body>
 </html>

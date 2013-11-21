@@ -57,12 +57,12 @@
 
           <form action="#" method="post" class="form-signin">
             <h2 class="form-signin-heading">Faça o login aqui:</h2>
-            <input name="user" type="text" class="form-control" placeholder="Email address"  autofocus>
-            <input name="pass" type="password" class="form-control" placeholder="Password" >
+            <input name="user" type="text" class="form-control" placeholder="Email"  autofocus>
+            <input name="pass" type="password" class="form-control" placeholder="Senha" >
             <label class="checkbox">
-              <input type="checkbox" value="remember-me"> Remember me
+              <input type="checkbox" value="remember-me"> Lembrar senha
             </label>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
           </form>
 
         </div> <!-- /container -->

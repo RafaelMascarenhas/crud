@@ -69,7 +69,7 @@
               <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                <li><a href="adicionar.php">Editar perfil</a></li>
+                <li><a href="editar_usuario.php">Editar perfil</a></li>
                 <li class="divider"></li>
                 <li><a href="logout.php">Sair</a></li>
                 </ul>
@@ -157,9 +157,9 @@
                       <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
     
                     
-                    <a data-original-title="Deletar" data-toggle="modal" data-target="#modal_alert" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>                      
+                    <a data-original-title="Deletar" data-toggle="modal" data-target="#modal_alert<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>                      
                     <!-- Modal -->
-                      <div class="modal fade" id="modal_alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="modal_alert<?php echo $linha['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">

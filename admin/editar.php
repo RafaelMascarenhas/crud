@@ -77,7 +77,7 @@
               <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                <li><a href="adicionar.php">Editar perfil</a></li>
+                <li><a href="editar_usuario.php">Editar perfil</a></li>
                 <li class="divider"></li>
                 <li><a href="logout.php">Sair</a></li>
                 </ul>
@@ -90,7 +90,7 @@
     <div class="container" >
       <div class="tabela col-md-3">
         <h2>Editar produto</h2>
-	      <br><br><br>
+	      <br>
 <?php
  if(!empty($_POST))
  {
