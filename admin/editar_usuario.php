@@ -66,15 +66,18 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.php">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produtos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="adicionar.php">Adicionar</a></li>
+                  <li><a href="produtos.php">Listar</a></li>
+                </ul>
+              </li>               
             </ul>
             <ul class='nav navbar-nav navbar-right'> 
               <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                <li><a href="index.php">Produtos</a></li>
-                <li class="divider"></li>
-                <li><a href="logout.php">Sair</a></li>
-                </ul>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?></a>
+
               </li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -88,7 +91,6 @@
 <?php
  if(!empty($_POST))
  {
-  echo $_POST['nome'];
  // MONTANDO UM ARRAY PARA O INSERT
     $dados = array(     // gmdate()  RETORNA A HORA DO MERIDIANO GREENWICH
                         'nome'=>$_POST['nome'],
@@ -98,8 +100,11 @@
 
     $string = "id = ".$_SESSION['id'];                                                                                                                                                                                                                                                                                           
     // CHAMAMOS A CLASE DE INSERCAO
-    $conecta->alterar("autenticacao", $dados, $string);
-    $msg = '<div class="alert alert-success"><span>Usuário alterado com sucesso!</span></div>';
+    if($_POST['senha'] == $_POST['senha2'])
+    {
+      $conecta->alterar("autenticacao", $dados, $string);
+      $msg = '<div class="alert alert-success"><span>Usuário alterado com sucesso!</span></div>';
+    }
   }
     $paginacao->sql = "SELECT * from autenticacao WhERE id = '".$_SESSION['id']."'";
     $resultado = $conecta->connection()->query($paginacao->sql());
@@ -116,6 +121,8 @@
           <br><input name='usuario' type='text' class='form-control' required autofocus>
 	        Senha:
           <br><input name='senha' type='password' class='form-control' required autofocus>
+          Confirmação de senha:
+          <br><input name='senha2' type='password' class='form-control' required autofocus>
           <br><br>  
           <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
           <div class="btn-group">
@@ -123,7 +130,14 @@
           </div>
         </form>
       </div>
+    <div id="footer">
+      <br><br><br><br><br><br>
+      <div class="container" align='center'>
+        <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
+      </div>
+    </div>      
     </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

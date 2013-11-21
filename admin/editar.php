@@ -72,6 +72,13 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="index.php">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produtos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="adicionar.php">Adicionar</a></li>
+                  <li><a href="produtos.php">Listar</a></li>
+                </ul>
+              </li>              
             </ul>
             <ul class='nav navbar-nav navbar-right'> 
               <li>
@@ -131,10 +138,16 @@
           <br>  
           <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
           <div class="btn-group">
-            <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
+            <a href="produtos.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
       </div>
+      <br>
+      <div id="footer">
+      <div class="container" align='center'>
+        <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
+      </div>
+    </div>      
     </div>
 
     <!-- Bootstrap core JavaScript

@@ -64,7 +64,14 @@
 
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="index.php">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produtos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="adicionar.php">Adicionar</a></li>
+                  <li><a href="produtos.php">Listar</a></li>
+                </ul>
+              </li>
             </ul>
             <ul class='nav navbar-nav navbar-right'> 
               <li>
@@ -106,20 +113,28 @@
         <div class="input-group ">
         Insira as informações necessárias:<br>
         <form action='' method='post'>
-	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa'  autofocus><br>
-	        <br><input name='produto' type='text' class='form-control' placeholder='Produto'  autofocus><br>
-	        <br><input name='setor' type='text' class='form-control' placeholder='Setor'  autofocus><br>
-	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento'  autofocus><br>
-	        <br><input name='marca' type='text' class='form-control' placeholder='Marca'  autofocus><br>
-	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição'  autofocus><br>
+	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa' required autofocus><br>
+	        <br><input name='produto' type='text' class='form-control' placeholder='Produto' required autofocus><br>
+	        <br><input name='setor' type='text' class='form-control' placeholder='Setor' required autofocus><br>
+	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento' required autofocus><br>
+	        <br><input name='marca' type='text' class='form-control' placeholder='Marca' required autofocus><br>
+	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição' required autofocus><br>
           <br>  
           <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Gravar </button>
           <div class="btn-group">
-            <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
+            <a href="produtos.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
       </div>
+    <div id="footer">
+      <br>
+      <div class="container" align='center'>
+        <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
+      </div>
     </div>
+    </div>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

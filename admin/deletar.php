@@ -1,5 +1,6 @@
 <?php
   $id = $_GET['id'];
+  $pag = $_GET['pag'];
   $string = "id = ".$id;
   
   function __autoload($classe) 
@@ -19,5 +20,4 @@
   // CHAMAMOS A CLASE DE INSERCAO
   $conecta->delete("produto", $string);
 
-
-   header('Location: index.php?deletar=sim');
+   header('Location: produtos.php?pag='.$pag);
