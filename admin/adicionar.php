@@ -1,8 +1,6 @@
 <?php
-  if($_POST)
-  {
-    $msg = '<div class="alert alert-success"><span>Produto adicionado com sucesso!</span></div>';
-  }
+  session_start();
+
   function __autoload($classe) 
   {
     if (file_exists("../classes/{$classe}.class.php")) 
@@ -10,7 +8,6 @@
       include_once "../classes/{$classe}.class.php"; 
     }
   }             
-
         /*
          * CLASSE DE REGISTROS E CONEXAO
          */
@@ -28,6 +25,9 @@
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
     <title>Admin</title>
+
+    <!--Carregando o fonte awesome-->
+    <link href="../bootstrap/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -61,15 +61,27 @@
             </button>
             <a class="navbar-brand" href="#">Produtos</a>
           </div>
+
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="index.php">Home</a></li>
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+            <ul class='nav navbar-nav navbar-right'> 
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li><a href="adicionar.php">Editar perfil</a></li>
+                <li class="divider"></li>
+                <li><a href="logout.php">Sair</a></li>
+                </ul>
+              </li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
 
     <div class="container" >
-      <div class="tabela">
+      <div class="tabela col-md-3">
         <h2>Adicionar produto</h2>
 	      <br><br><br>
 <?php

@@ -1,10 +1,7 @@
 <?php
   $id = $_GET['id'];
   $string = "id = ".$id;
-  if($_POST)
-  {
-    $msg = '<div class="alert alert-success"><span>Produto deletado com sucesso!</span></div>';
-  }
+  
   function __autoload($classe) 
   {
     if (file_exists("../classes/{$classe}.class.php")) 
@@ -23,4 +20,4 @@
   $conecta->delete("produto", $string);
 
 
-   header('Location: index.php');
+   header('Location: index.php?deletar=sim');

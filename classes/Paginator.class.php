@@ -107,7 +107,7 @@
             public function imprimeBarraNavegacao() {
                 if($this->resultado() > 0) {                
                         echo '<div class="pagination">';
-                            echo '<ul>';
+                            echo '';
                         if ($this->paginaAtual() > 1) {
                                 echo " <li><a href='?" . $this->paginador . "=1"  . $this->reconstruiQueryString($this->paginador) . "'>Primeiro</a></li> ";
                                 $anterior = $this->paginaAtual() - 1;
@@ -129,7 +129,7 @@
                                 echo " <li><a href='?" . $this->paginador . "=" . $paginaProxima . $this->reconstruiQueryString($this->paginador) . "'>&raquo;</a></li> ";
                                 echo " <li><a href='?" . $this->paginador . "=" . $this->paginasTotais() . $this->reconstruiQueryString($this->paginador) . "'>&Uacute;ltimo</a></li> ";
                         }
-                            echo '</ul>';
+                            echo '';
                         echo '</div>';                        
                 }        
             }

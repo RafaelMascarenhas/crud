@@ -1,4 +1,6 @@
 <?php
+  session_start();
+
   function __autoload($classe) 
   {
     if (file_exists("../classes/{$classe}.class.php")) 
@@ -6,7 +8,6 @@
       include_once "../classes/{$classe}.class.php"; 
     }
   }             
-
         /*
          * CLASSE DE REGISTROS E CONEXAO
          */
@@ -58,22 +59,15 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Produtos</a>
-
           </div>
+
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Acão <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="adicionar.php">Adicionar</a></li>
-                  <li><a href="editar.php">Editar</a></li>
-                  <li><a href="#">Deletar</a></li>
-                </ul>
             </ul>
             <ul class='nav navbar-nav navbar-right'> 
               <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i> Usuário <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-male"></i><?php echo ' '.$_SESSION['nome'].' '?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                 <li><a href="adicionar.php">Editar perfil</a></li>
                 <li class="divider"></li>
@@ -81,7 +75,6 @@
                 </ul>
               </li>
             </ul>
-           </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -118,7 +111,7 @@
                 <tbody>
 <?php
       $paginacao->sql = "SELECT * from produto";
-      $paginacao->limite = 10;                                                                                
+      $paginacao->limite = 10;
       $resultado = $conecta->connection()->query($paginacao->sql());
       while($linha = $resultado->fetch(PDO::FETCH_ASSOC)) 
       {
@@ -144,8 +137,15 @@
                               <h4 class="modal-title" id="myModalLabel">Detalhes do produto</h4>
                             </div>
                             <div class="modal-body">
-                              <?php echo $linha['id'];?>
-                             
+                            <?php 
+                              echo '<b>Id: </b>'.$linha['id'];
+                              echo '<b><br>Empresa: </b>'.$linha['empresa'];
+                              echo '<b><br>Produto: </b>'.$linha['produto'];
+                              echo '<b><br>Setor: </b>'.$linha['setor'];
+                              echo '<b><br>Segmento: </b>'.$linha['segmento'];
+                              echo '<b><br>Marca: </b>'.$linha['marca'];
+                              echo '<b><br>Descrição: </b>'.$linha['descricao'];
+                            ?>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -157,7 +157,7 @@
                       <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
     
                     
-                    <a data-original-title="Detalhes" data-toggle="modal" data-target="#modal_alert" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>                      
+                    <a data-original-title="Deletar" data-toggle="modal" data-target="#modal_alert" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>                      
                     <!-- Modal -->
                       <div class="modal fade" id="modal_alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -166,11 +166,11 @@
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
-                            Tem certesa que gostaria de apagar este produto?
+                            Tem certesa que gostaria de deletar este produto?
                             </div>
                             <div class="modal-footer">
+                              <a href="deletar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><button type="button" class="btn btn-default"> Sim </button></a>
                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
-                              <a href="deletar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><button type="button" class="btn btn-default"> Sim </button></a>                    
                             </div>
                           </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
