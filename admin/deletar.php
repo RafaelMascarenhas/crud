@@ -23,4 +23,4 @@
   $conecta->delete("produto", $string);
 
 
-   header('Location: index.php?deletar=sim');
+   header('Location: index.php');

@@ -133,9 +133,9 @@
                     <td><?php echo $linha['descricao'];?></td>
                     <td width="15%">
                     <div class="btn-group">
-                      <a data-original-title="Detalhes" data-toggle="modal" data-target="#myModal<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-zoom-in"></span></i></a>
 
-                      <!-- Modal -->
+                    <a data-original-title="Detalhes" data-toggle="modal" data-target="#myModal<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-zoom-in"></span></i></a>                      
+                    <!-- Modal -->
                       <div class="modal fade" id="myModal<?php echo $linha['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
@@ -155,8 +155,29 @@
                       </div><!-- /.modal -->
 
                       <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
-                      <a data-original-title="Deletar" href="deletar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>
-                      
+    
+                    
+                    <a data-original-title="Detalhes" data-toggle="modal" data-target="#modal_alert" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>                      
+                    <!-- Modal -->
+                      <div class="modal fade" id="modal_alert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                            Tem certesa que gostaria de apagar este produto?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                              <a href="deletar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><button type="button" class="btn btn-default"> Sim </button></a>                    
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
+
+
+
                     </div></td>
                   </tr>
 <?php
