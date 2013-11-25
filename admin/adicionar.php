@@ -1,4 +1,6 @@
+
 <?php
+
   session_start();
 
   function __autoload($classe) 
@@ -8,9 +10,7 @@
       include_once "../classes/{$classe}.class.php"; 
     }
   }             
-        /*
-         * CLASSE DE REGISTROS E CONEXAO
-         */
+     
         $conecta = new Recordset();
         $conecta->connection();
 ?>
@@ -35,6 +35,9 @@
     <!-- Custom styles for this template -->
     <link href="../css/style.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="../css/sticky-footer-navbar.css" rel="stylesheet">
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -46,7 +49,6 @@
   </head>
 
   <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
 
@@ -59,7 +61,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Produtos</a>
+            <a class="navbar-brand" href="#">CRUD</a>
           </div>
 
           <div class="collapse navbar-collapse">
@@ -88,7 +90,7 @@
       </div>
 
     <div class="container" >
-      <div class="tabela col-md-3">
+      <div class="tabela">
         <h2>Adicionar produto</h2>
 	      <br>
 <?php
@@ -110,31 +112,31 @@
 ?>        
 	      <?php echo @$msg;?>
 	      <br>
-        <div class="input-group ">
+        <div class='col-xs-13 col-sm-3'>
         Insira as informações necessárias:<br>
         <form action='' method='post'>
-	        <br><input name='empresa' type='text' class='form-control' placeholder='Empresa' required autofocus><br>
-	        <br><input name='produto' type='text' class='form-control' placeholder='Produto' required autofocus><br>
-	        <br><input name='setor' type='text' class='form-control' placeholder='Setor' required autofocus><br>
-	        <br><input name='segmento' type='text' class='form-control' placeholder='Segmento' required autofocus><br>
-	        <br><input name='marca' type='text' class='form-control' placeholder='Marca' required autofocus><br>
-	        <br><input name='descricao' type='text' class='form-control' placeholder='Descrição' required autofocus><br>
+	        <input name='empresa' type='text' class='form-control' placeholder='Empresa' required autofocus><br>
+	        <input name='produto' type='text' class='form-control' placeholder='Produto' required autofocus><br>
+	        <input name='setor' type='text' class='form-control' placeholder='Setor' required autofocus><br>
+	        <input name='segmento' type='text' class='form-control' placeholder='Segmento' required autofocus><br>
+	        <input name='marca' type='text' class='form-control' placeholder='Marca' required autofocus><br>
+	        <input name='descricao' type='text' class='form-control' placeholder='Descrição' required autofocus><br>
           <br>  
-          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Gravar </button>
+          <button type='submit'class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Gravar </button>
           <div class="btn-group">
             <a href="produtos.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
+        <br>
       </div>
+    </div>
+  </div>
+</div>
     <div id="footer">
-      <br>
       <div class="container" align='center'>
         <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
       </div>
-    </div>
-    </div>
-
-
+    </div>    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

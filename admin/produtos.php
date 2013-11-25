@@ -1,6 +1,5 @@
 <?php
   session_start();
-
   @$pag = $_GET['pag'];
 
   function __autoload($classe) 
@@ -11,12 +10,13 @@
     }
   }             
         /*
+
          * CLASSE DE REGISTROS E CONEXAO
+
          */
         $conecta = new Recordset();
         $conecta->connection();
         $paginacao = new Paginator(); 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +27,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-
+   
     <title>Admin</title>
-
     <!--Carregando o fonte awesome-->
     <link href="../bootstrap/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -38,6 +37,9 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/style.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+    <link href="../css/sticky-footer-navbar.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -88,17 +90,17 @@
         </div>
       </div>
 
+
       <!-- Begin page content -->
         <div class="page-header">
           <h1 align="center" >Tabela de produtos</h1>
         </div>
         <p align='center' class="lead">Adicione, altere ou delete produtos:</p>
-    </div>
           <div class="container">
 
             <div class="pull-right">
               <div class="btn-group">
-                <a href="adicionar.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Novo <span class="glyphicon glyphicon-plus"></span></a>
+                <a href="adicionar.php" class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Novo <span class="glyphicon glyphicon-plus"></span></a>
               </div>
             </div>
             <h3>Lista de produtos</h3>
@@ -124,6 +126,7 @@
       $resultado = $conecta->connection()->query($paginacao->sql());
       while($linha = $resultado->fetch(PDO::FETCH_ASSOC)) 
       {
+
 ?>
                   <tr>
                     <td><?php echo $linha['id'];?></td>
@@ -137,6 +140,7 @@
                     <div class="btn-group">
 
                     <a data-original-title="Detalhes" data-toggle="modal" data-target="#myModal<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-zoom-in"></span></i></a>                      
+
                     <!-- Modal -->
                       <div class="modal fade" id="myModal<?php echo $linha['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -157,33 +161,32 @@
                             ?>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                             </div>
                           </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                       </div><!-- /.modal -->
-
                       <a data-original-title="Editar" href="editar.php?id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-wrench"></span></i></a>
-    
-                    
                     <a data-original-title="Deletar" data-toggle="modal" data-target="#modal_alert<?php echo $linha['id']; ?>" class="tooltip-top btn"><i class="icon-list-alt"><span class="glyphicon glyphicon-remove"></span></i></a>                      
+                    
                     <!-- Modal -->
                       <div class="modal fade" id="modal_alert<?php echo $linha['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
+                            <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <div class="modal-body">
-                            <br><br>
-                            Tem certesa que gostaria de deletar este produto?
-                            <br><br>
+                              <h4 class="modal-title" id="myModalLabel">Excluir produto</h4>
                             </div>
+                            <div class="modal-body">
+                            Tem certesa que gostaria de deletar este produto?
+                            </div>
+                            <div class="modal-footer">
                               <a href="deletar.php?pag=<?php echo $pag;?>&id=<?php echo $linha['id']; ?>" class="tooltip-top btn"><button type="button" class="btn btn-default"> Sim </button></a>
                               <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                            </div>
                           </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                       </div><!-- /.modal -->
-
-
 
                     </div></td>
                   </tr>
@@ -199,24 +202,19 @@
             </div>
           </div>
     </div>
+    </div>
     <div id="footer">
-      <br>
       <div class="container" align='center'>
         <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
       </div>
     </div>
 
-
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../js/jquery.js"></script>
-
     <script src="../js/bootstrap-tooltip.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/custom.js"></script>
-
   </body>
 </html>

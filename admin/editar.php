@@ -33,7 +33,6 @@
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
     <title>Admin</title>
-
     <!--Carregando o fonte awesome-->
     <link href="../bootstrap/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -42,6 +41,9 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/sticky-footer-navbar.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -54,7 +56,6 @@
   </head>
 
   <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
 
@@ -63,11 +64,8 @@
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Produtos</a>
+            <a class="navbar-brand" href="#">CRUD</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -120,36 +118,37 @@
 ?>
 	      <?php echo @$msg;?>
 	      <br>
-        <div class="input-group ">
+        <div class="class='col-xs-13 col-sm-3'">
         Modifique os campos necessários:<br><br>
         <form action='' method='post'>
           Empresa:
-	        <br><input name='empresa' value="<?php echo $linha['empresa'];?>" type='text' class='form-control' placeholder='Empresa'  autofocus>
+	        <br><input name='empresa' value="<?php echo $linha['empresa'];?>" type='text' class='form-control' placeholder='Empresa' required autofocus>
 	        Produto:
-          <br><input name='produto' value="<?php echo $linha['produto'];?>" type='text' class='form-control' placeholder='Produto'  autofocus>
+          <br><input name='produto' value="<?php echo $linha['produto'];?>" type='text' class='form-control' placeholder='Produto' required autofocus>
 	        Setor:
-          <br><input name='setor' value="<?php echo $linha['setor'];?>" type='text' class='form-control' placeholder='Setor'  autofocus>
+          <br><input name='setor' value="<?php echo $linha['setor'];?>" type='text' class='form-control' placeholder='Setor' required autofocus>
 	        Segmento:
-          <br><input name='segmento' value="<?php echo $linha['segmento'];?>" type='text' class='form-control' placeholder='Segmento'  autofocus>
+          <br><input name='segmento' value="<?php echo $linha['segmento'];?>" type='text' class='form-control' placeholder='Segmento' required autofocus>
 	        Marca:
-          <br><input name='marca' value="<?php echo $linha['marca'];?>" type='text' class='form-control' placeholder='Marca'  autofocus>
+          <br><input name='marca' value="<?php echo $linha['marca'];?>" type='text' class='form-control' placeholder='Marca' required autofocus>
 	        Descrição:
-          <br><input name='descricao' value="<?php echo $linha['descricao'];?>" type='text' class='form-control' placeholder='Descrição'  autofocus><br>
+          <br><input name='descricao' value="<?php echo $linha['descricao'];?>" type='text' class='form-control' placeholder='Descrição' required autofocus><br>
           <br>  
-          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
+          <button type='submit'class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Editar </button>
           <div class="btn-group">
             <a href="produtos.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
       </div>
-      <br>
-      <div id="footer">
+      <br>  
+     </div>
+    </div>
+  </div>
+    <div id="footer">
       <div class="container" align='center'>
         <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
       </div>
-    </div>      
-    </div>
-
+    </div>  
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

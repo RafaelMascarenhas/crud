@@ -37,6 +37,9 @@
     <!-- Custom styles for this template -->
     <link href="../css/style.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="../css/sticky-footer-navbar.css" rel="stylesheet">
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -61,7 +64,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Produtos</a>
+            <a class="navbar-brand" href="#">CRUD</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -87,7 +90,7 @@
     <div class="container" >
       <div class="tabela col-md-3">
         <h2>Editar usuário</h2>
-	      <br><br><br>
+	      <br>
 <?php
  if(!empty($_POST))
  {
@@ -111,8 +114,7 @@
     $linha = $resultado->fetch(PDO::FETCH_ASSOC);
 ?>
 	      <?php echo @$msg;?>
-	      <br>
-        <div class="input-group ">
+        <div class="class='col-xs-13 col-sm-3'">
         Modifique os campos desejados:<br><br>
         <form action='' method='post'>
           Nome:
@@ -124,20 +126,21 @@
           Confirmação de senha:
           <br><input name='senha2' type='password' class='form-control' required autofocus>
           <br><br>  
-          <button type='submit'class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Editar </button>
+          <button type='submit'class="btn btn-primary"><i class="icon-plus-sign icon-white"></i>Editar </button>
           <div class="btn-group">
             <a href="index.php" class="btn btn-warning"><i class="icon-plus-sign icon-white"></i>Cancelar</a>
           </div>
         </form>
+        <br>
       </div>
+    </div>
+  </div>
+</div>
     <div id="footer">
-      <br><br><br><br><br><br>
       <div class="container" align='center'>
         <p class="text-muted credit">CRUD - Create, read, update and delete. Por <a href="#">Rafael Mascarenhas de Oliveira Souza</a> estagiário da Hiamina Tecnologia. 2013</p>
       </div>
-    </div>      
     </div>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

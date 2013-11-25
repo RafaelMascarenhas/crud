@@ -46,7 +46,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">CRUD</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -75,10 +75,11 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>Sticky footer with fixed navbar</h1>
+          <h1>Demonstração de um CRUD</h1>
         </div>
-        <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
-        <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+        <p class="lead">A aplicação vista neste exemplo demonstra todos os aspectos de um CRUD</p>
+        <p> Os produtos nesta aplicação podem ser cadastrados(CREAT), lidos(READ), atualizados(UPDATE), ou deletados(DELETE).</p>
+        <p> Uma demonstração completa sobre o CRUD.</p>
       </div>
     </div>
 
